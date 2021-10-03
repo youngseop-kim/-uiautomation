@@ -11,5 +11,5 @@
 ## what is purpose ?
  ...
  
-## how to use library ?
+## how to use ?
  ...
