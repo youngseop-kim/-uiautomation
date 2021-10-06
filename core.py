@@ -1,12 +1,26 @@
 
-import definition.resolver
+from definition.resolver import Resolver
+from definition.resolver import ResolverFactory
+from definition.resolver_guide import ResolverGuideExpression
+from definition.resolver_guide import ResolverGuide
+
 import reference.patterns
 import reference.properties
 
-definition.resolver.Resolver._reference_properties = reference.properties
-definition.resolver.Resolver._reference_patterns = reference.patterns
+Resolver._reference_properties = reference.properties
+Resolver._reference_patterns = reference.patterns
 
-a = definition.resolver.ResolverFactory.create_instance_from_root()
-for i in a.iterate_on_child_resolvers():
-    for j in i.iterate_on_child_resolvers():
-        print(j.resolve_patterns('text', 'window'))
+root = ResolverFactory.create_instance_from_root()
+expression = {
+    'name' : '1Code',
+    '__match_method' : 'is_match_fnmatch'
+    }
+
+expression_ = ResolverGuideExpression(expression)
+resolver_ = ResolverGuide.point_horizontally(
+    root,
+    expression_.public_expression,
+    expression_.private_expression
+    )
+
+print(resolver_.resolve_property('name'))
