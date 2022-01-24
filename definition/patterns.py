@@ -1,5 +1,5 @@
 
-from reference.base import UIAutomationCore
+from definition.base import UIAutomationCore
 
 annotation = (10023, UIAutomationCore.IUIAutomationAnnotationPattern,)
 custom_navigation = (10033, UIAutomationCore.IUIAutomationCustomNavigationPattern,)
